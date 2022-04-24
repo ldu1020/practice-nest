@@ -1,0 +1,35 @@
+type Source {
+  github: String
+  figma: String
+}
+
+type Component {
+  id: ID!
+  name: String!
+  source: Source
+}
+
+input CreateComponentInput {
+  id: ID!
+  name: String!
+  github: String
+  figma: String
+}
+
+input UpdateComponentInput {
+  id: ID!
+  name: String
+  github: String
+  figma: String
+}
+
+type Query {
+  components: [Component!]!
+  component(id: Int!): Component
+}
+
+type Mutation {
+  createComponent(createComponentInput: CreateComponentInput!): Component!
+  updateComponent(updateComponentInput: UpdateComponentInput!): Component!
+  removeComponent(id: Int!): Component
+}
